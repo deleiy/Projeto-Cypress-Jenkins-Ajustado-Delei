@@ -6,3 +6,4 @@ Projeto simples e funcional para execução de testes Cypress em pipeline Jenkin
 
 npm ci
 npm test
+prejto simples
