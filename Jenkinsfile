@@ -1,23 +1,7 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/deleiy/Projeto-Cypress-Jenkins-Ajustado-Delei.git'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm ci'
-            }
-        }
-
-        stage('Run Cypress Tests') {
-            steps {
-                sh 'npx cypress run --browser electron --headless'
-            }
-        }
+stage('Install Dependencies') {
+    steps {
+        // O 'npm ci' instala os pacotes, o 'cypress install' garante o executável
+        sh 'npm ci'
+        sh 'npx cypress install'
     }
 }
