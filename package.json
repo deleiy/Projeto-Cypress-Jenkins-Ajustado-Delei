@@ -1,0 +1,10 @@
+{
+  "name": "projeto-cypress-jenkins",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx cypress run --browser electron --headless"
+  },
+  "devDependencies": {
+    "cypress": "^13.0.0"
+  }
+}
