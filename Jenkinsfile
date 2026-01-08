@@ -1,26 +1,36 @@
+
 pipeline {
     agent any
-    environment {
-        // Isso força o Cypress a ser instalado dentro da pasta do projeto
-        CYPRESS_CACHE_FOLDER = "${WORKSPACE}\\cypress_cache"
-    }
+
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/deleiy/Projeto-Cypress-Jenkins-Ajustado-Delei.git'
+                // Faz o checkout do seu repositório
+                git branch: 'main', url: 'https://github.com/deleiy/Projeto-Cypress-Jenkins-Ajustado-Delei.git'
             }
         }
-        stage('Install Dependencies') {
+
+        stage('Instalar Dependências') {
             steps {
-                // Usamos 'bat' para Windows
-                bat 'npm ci'
-                bat 'npx cypress install'
+                // Instala as dependências do projeto
+                bat 'npm install'
             }
         }
-        stage('Run Cypress Tests') {
+
+        stage('Executar Testes') {
             steps {
-                bat 'npx cypress run --browser electron --headless'
+                // Executa os testes via script npm
+                bat 'npm test'
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Pipeline concluído com sucesso!'
+        }
+        failure {
+            echo '❌ Pipeline falhou. Verifique os logs no console.'
         }
     }
 }
