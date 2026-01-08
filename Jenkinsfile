@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/deleiy/Projeto-Cypress-Jenkins-Ajustado.zip.git '
+                git 'https://github.com/deleiy/Projeto-Cypress-Jenkins-Ajustado-Delei.git'
             }
         }
 
