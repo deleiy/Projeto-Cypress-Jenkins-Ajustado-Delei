@@ -1,26 +1,26 @@
-
 pipeline {
     agent any
+
+    tools {
+        nodejs 'NodeJS'
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                // Faz o checkout do seu repositório
                 git branch: 'main', url: 'https://github.com/deleiy/Projeto-Cypress-Jenkins-Ajustado-Delei.git'
             }
         }
 
         stage('Instalar Dependências') {
             steps {
-                // Instala as dependências do projeto
                 bat 'npm install'
             }
         }
 
-        stage('Executar Testes') {
+        stage('Executar Testes Cypress') {
             steps {
-                // Executa os testes via script npm
-                bat 'npm test'
+                bat 'npx cypress run'
             }
         }
     }
