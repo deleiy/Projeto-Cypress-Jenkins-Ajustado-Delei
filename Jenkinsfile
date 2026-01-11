@@ -17,9 +17,8 @@ pipeline {
 
         stage('Executar Testes Cypress') {
             steps {
-                // ADICIONEI ESTA LINHA ABAIXO PARA CORRIGIR AS CORES
                 ansiColor('xterm') {
-                    bat 'npx cypress run'
+                    bat 'npx cypress run --browser chrome'
                 }
             }
         }
@@ -37,4 +36,3 @@ pipeline {
         }
     }
 }
-
